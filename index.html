@@ -1,0 +1,312 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>RRS Builders Corp. (website concept)</title>
+<meta name="description" content="Website concept for RRS Builders Corp., Baldwin, NY: family-owned remodeling for kitchens, bathrooms, basements, garages and brick and stone.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:auto}
+body{margin:0;overflow-x:hidden}
+img{max-width:100%;display:block}
+button,input,select,textarea{font:inherit;color:inherit}
+.skip{position:absolute;left:-999px;top:0;z-index:999;padding:.8rem 1rem;background:#000;color:#fff}
+.skip:focus{left:1rem}
+:focus-visible{outline:3px solid var(--focus,#2a7fff);outline-offset:3px}
+.js .rv{opacity:0;transform:translateY(26px);transition:opacity .9s var(--ease,cubic-bezier(.2,.7,.2,1)),transform 1s var(--ease,cubic-bezier(.2,.7,.2,1));transition-delay:calc(var(--d,0)*90ms)}
+.js .rv.in{opacity:1;transform:none}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+dialog.lbx{border:0;padding:0;background:rgba(8,8,8,.96);color:#fff;width:100vw;height:100vh;max-width:none;max-height:none}
+dialog.lbx[open]{display:grid;grid-template-rows:1fr auto auto;justify-items:center;align-items:center;gap:.6rem;padding:1rem}
+dialog.lbx img{max-width:100%;max-height:100%;min-height:0;object-fit:contain;border-radius:10px}
+dialog.lbx::backdrop{background:#080808}
+dialog.lbx .lbb{display:flex;gap:.6rem}
+dialog.lbx .lbb button{min-width:54px;min-height:48px;border-radius:10px;border:1.5px solid #fff;background:none;color:#fff;font-weight:600;cursor:pointer;padding:0 1rem}
+.demo-note{font-size:.86rem;opacity:.8;margin-top:.8rem}
+[hidden]{display:none!important}
+/* booking widget */
+.bk{display:grid;gap:1.2rem}
+.bk h4{margin:0 0 .6rem;font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;opacity:.75}
+.bk .days{display:grid;grid-template-columns:repeat(7,1fr);gap:.4rem}
+.bk .days button{min-height:58px;border-radius:12px;border:1.5px solid var(--bk-line,#ccc);background:var(--bk-bg,#fff);cursor:pointer;display:grid;place-items:center;line-height:1.1;padding:.3rem 0;transition:transform .2s,border-color .2s,background .2s}
+.bk .days button small{font-size:.68rem;opacity:.7;text-transform:uppercase;letter-spacing:.06em}
+.bk .days button b{font-size:1.15rem}
+.bk .days button:hover:not(:disabled){transform:translateY(-2px);border-color:var(--bk-acc,#000)}
+.bk .days button:disabled{opacity:.35;cursor:not-allowed}
+.bk .days button[aria-pressed=true]{background:var(--bk-acc,#000);border-color:var(--bk-acc,#000);color:var(--bk-on,#fff)}
+.bk .slots{display:flex;flex-wrap:wrap;gap:.5rem}
+.bk .slots button{min-height:46px;padding:0 1.1rem;border-radius:999px;border:1.5px solid var(--bk-line,#ccc);background:var(--bk-bg,#fff);cursor:pointer;font-weight:600}
+.bk .slots button[aria-pressed=true]{background:var(--bk-acc,#000);border-color:var(--bk-acc,#000);color:var(--bk-on,#fff)}
+.bk .slots button:disabled{opacity:.35;text-decoration:line-through;cursor:not-allowed}
+.bk .sum{border-radius:14px;padding:1rem 1.1rem;background:var(--bk-sum,#f3f3f3);font-weight:600}
+.bk label{display:grid;gap:.35rem;font-size:.9rem;font-weight:600}
+.bk input,.bk select,.bk textarea{min-height:50px;border-radius:12px;border:1.5px solid var(--bk-line,#ccc);background:var(--bk-bg,#fff);padding:.6rem .85rem;width:100%}
+.bk .two{display:grid;gap:.8rem}
+@media(min-width:620px){.bk .two{grid-template-columns:1fr 1fr}}
+.bk .err{color:#c0392b;font-size:.82rem;font-weight:600}
+/* admin demo */
+.adm{display:grid;gap:1rem}
+.adm .pick{display:flex;gap:.5rem;flex-wrap:wrap}
+.adm .pick button{width:74px;height:74px;border-radius:10px;overflow:hidden;padding:0;border:3px solid transparent;cursor:pointer;background:none}
+.adm .pick button img{width:100%;height:100%;object-fit:cover}
+.adm .pick button[aria-pressed=true]{border-color:var(--adm-acc,#000)}
+.adm label{display:grid;gap:.35rem;font-size:.9rem;font-weight:600}
+.adm input{min-height:50px;border-radius:12px;border:1.5px solid var(--adm-line,#ccc);background:var(--adm-bg,#fff);padding:.6rem .85rem;width:100%}
+.adm .bar{display:flex;align-items:center;gap:.6rem;font-size:.82rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+.adm .bar i{width:10px;height:10px;border-radius:50%;background:#2ecc71;box-shadow:0 0 0 4px rgba(46,204,113,.25)}
+.flash{animation:flash 1.6s ease}
+@keyframes flash{0%{box-shadow:0 0 0 0 var(--adm-acc,#000);transform:scale(.96)}40%{box-shadow:0 0 0 8px var(--adm-acc,#000);transform:scale(1)}100%{box-shadow:0 0 0 0 transparent}}
+@media (prefers-reduced-motion:reduce){.js .rv{opacity:1;transform:none;transition:none}*{animation:none!important}}
+
+:root{--bp:#0b2a4a;--bp2:#0f3560;--grid:rgba(160,200,255,.12);--line:#9cc3f0;--white:#f4f8ff;--soft:#a9bfdc;--hl:#ffd84a;--paper:#f5f3ee;--ink:#0b1f36;--ease:cubic-bezier(.2,.7,.2,1);--sans:"IBM Plex Sans",system-ui,sans-serif;--mono:"IBM Plex Mono",ui-monospace,monospace;--wrap:1200px;--focus:#ffd84a}
+body{background:var(--bp);color:var(--white);font:400 1.04rem/1.65 var(--sans)}
+.bpbg{background-color:var(--bp);background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px),linear-gradient(rgba(160,200,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(160,200,255,.05) 1px,transparent 1px);background-size:120px 120px,120px 120px,24px 24px,24px 24px}
+h1,h2,h3{margin:0;font-weight:700;letter-spacing:-.03em;line-height:1.02}
+.wrap{width:min(100% - 2.4rem,var(--wrap));margin-inline:auto}
+.mono{overflow-wrap:anywhere;font:500 .78rem var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--line)}
+.hl{background:linear-gradient(transparent 58%,rgba(255,216,74,.55) 58%);padding:0 .1em}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.6rem;min-height:54px;padding:.6rem 1.5rem;border:1.5px solid var(--hl);background:var(--hl);color:var(--ink);font:700 .98rem var(--sans);text-decoration:none;cursor:pointer;transition:transform .25s var(--ease),background .25s}
+.btn:hover{transform:translateY(-2px);background:#ffe37a}
+.btn.ghost{background:transparent;color:var(--white);border-color:var(--line)}
+header{position:sticky;top:0;z-index:50;background:rgba(11,42,74,.92);backdrop-filter:blur(10px);border-bottom:1px solid rgba(156,195,240,.25)}
+header .wrap{display:flex;align-items:center;gap:1rem;min-height:70px}@media(max-width:380px){.brand small{display:none}.brand b{font-size:1rem}.brand .lg{width:38px;height:38px}}
+.brand{display:flex;align-items:center;gap:.7rem;color:var(--white);text-decoration:none}
+.brand .lg{width:44px;height:44px;border:1.5px solid var(--line);display:grid;place-items:center;font:600 .9rem var(--mono)}
+.brand b{font:700 1.15rem var(--sans);white-space:nowrap}
+.brand small{display:block;font:500 .64rem var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--soft)}
+nav.main{margin-left:auto;display:none;gap:1.7rem}
+nav.main button{background:none;border:0;cursor:pointer;color:var(--white);font:500 .8rem var(--mono);letter-spacing:.1em;text-transform:uppercase;min-height:44px;padding:0}
+nav.main button:hover{color:var(--hl)}
+.hc{margin-left:auto}.hc .btn{min-height:44px;padding:.3rem 1rem;font-size:.88rem}
+@media(min-width:960px){nav.main{display:flex}.hc{margin-left:1.4rem}}
+/* hero */
+.hero{padding-block:clamp(2.8rem,7vw,5.5rem);border-bottom:1px solid rgba(156,195,240,.25)}
+.hero .g{display:grid;gap:2.6rem;align-items:center}
+@media(min-width:980px){.hero .g{grid-template-columns:1fr 1.05fr;gap:3.5rem}}
+.hero h1{font-size:clamp(2.8rem,7.4vw,5.6rem)}
+.hero p{color:var(--soft);font-size:1.12rem;max-width:44ch;margin:1.3rem 0 2rem}
+.cta{display:flex;flex-wrap:wrap;gap:.8rem}
+.plan{position:relative;border:1.5px solid var(--line);padding:1rem;background:rgba(11,42,74,.6)}
+.plan svg{width:100%;height:auto;display:block}
+.plan .dw{fill:none;stroke:var(--white);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:var(--l);stroke-dashoffset:var(--l)}
+.plan.in .dw{animation:draw 2.6s var(--ease) forwards;animation-delay:calc(var(--i)*160ms)}
+.plan .lbl{font:500 11px var(--mono);fill:var(--hl);letter-spacing:.08em;opacity:0;transition:opacity .6s 1.8s}
+.plan.in .lbl{opacity:1}
+@keyframes draw{to{stroke-dashoffset:0}}
+.plan .cap{position:absolute;left:-1px;top:-1px;background:var(--line);color:var(--bp);font:600 .7rem var(--mono);padding:.25rem .6rem;letter-spacing:.08em}
+.spec{display:grid;grid-template-columns:repeat(2,1fr);border-top:1px solid rgba(156,195,240,.25);margin-top:2.2rem}
+@media(min-width:640px){.spec{grid-template-columns:repeat(4,1fr)}}
+.spec div{padding:1rem .2rem 0}
+.spec b{display:block;font:600 clamp(1.6rem,3.6vw,2.4rem)/1 var(--mono);color:var(--hl)}
+.spec b span{font:inherit;color:inherit}
+.spec small{font:500 .74rem var(--mono);text-transform:uppercase;letter-spacing:.06em;color:var(--soft)}
+/* services */
+.sec{padding-block:clamp(4rem,9vw,7rem)}
+.hd{display:grid;gap:1rem;margin-bottom:2.6rem}
+@media(min-width:900px){.hd{grid-template-columns:1fr 1fr;align-items:end}}
+.hd h2{font-size:clamp(2.4rem,5.6vw,4.2rem)}
+.hd p{color:var(--soft);margin:0}
+.rooms{display:grid;gap:1px;background:rgba(156,195,240,.3);border:1px solid rgba(156,195,240,.3)}
+@media(min-width:700px){.rooms{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1040px){.rooms{grid-template-columns:repeat(3,1fr)}}
+.rooms div{background:var(--bp);padding:1.6rem;min-height:200px;position:relative;transition:background .3s}
+.rooms div:hover{background:var(--bp2)}
+.rooms .tag{font:500 .72rem var(--mono);color:var(--line);letter-spacing:.1em}
+.rooms svg{position:absolute;right:1.2rem;top:1.2rem;width:54px;height:54px;stroke:var(--line);fill:none;stroke-width:1.5}
+.rooms h3{font-size:1.5rem;margin:2.4rem 0 .4rem}
+.rooms p{margin:0;color:var(--soft);font-size:.96rem}
+.rooms .more{background:var(--hl);color:var(--ink)}
+.rooms .more:hover{background:#ffe37a}
+.rooms .more h3{font-size:2.4rem}
+.rooms .more p,.rooms .more .tag{color:var(--ink)}
+/* reviews */
+.rv-wrap{background:var(--paper);color:var(--ink)}
+.rv-wrap .mono{color:#46658a}
+.rv-wrap .hd p{color:#4c5d72}
+.rg{display:grid;gap:1.4rem}
+@media(min-width:960px){.rg{grid-template-columns:.75fr 1.25fr;gap:3rem}}
+.score{border:1.5px solid var(--ink);padding:1.8rem;background:#fff;align-self:start}
+.score .big{display:block;font:600 5rem/1 var(--mono)}
+.score .big span{font:inherit}
+.stars{color:#e0a400;font-size:1.5rem;letter-spacing:.12em}
+.live{display:inline-flex;align-items:center;gap:.5rem;font:600 .74rem var(--mono);letter-spacing:.1em;text-transform:uppercase;color:#1a7f37}
+.live i{width:9px;height:9px;border-radius:50%;background:#1a7f37;animation:pulse 1.6s ease infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(26,127,55,.5)}100%{box-shadow:0 0 0 10px rgba(26,127,55,0)}}
+#rfeed{display:grid;gap:.8rem}
+.rc{min-width:0;background:#fff;border:1px solid #d9d4c8;padding:1.1rem 1.2rem;display:grid;grid-template-columns:auto 1fr;gap:.3rem 1rem;align-items:center}
+.rc .av{grid-row:1/3;width:44px;height:44px;border-radius:50%;background:#e4e9f0;display:grid;place-items:center;font:600 .8rem var(--mono);color:#46658a}
+.rc .top{flex-wrap:wrap;display:flex;justify-content:space-between;gap:1rem;font-size:.86rem;color:#4c5d72}
+.rc .top b{color:#e0a400;letter-spacing:.1em}
+.rc .lines{display:grid;gap:.4rem}
+.rc .lines i{display:block;height:9px;border-radius:5px;background:linear-gradient(90deg,#e8ecf1,#f3f5f8,#e8ecf1);background-size:200% 100%;animation:sh 1.8s linear infinite}
+@keyframes sh{to{background-position:-200% 0}}
+.rc.arrive{animation:arr 1s var(--ease)}
+@keyframes arr{from{transform:translateY(-14px);opacity:0;box-shadow:0 0 0 3px var(--hl)}to{transform:none;opacity:1}}
+.addon{display:inline-block;margin-top:1.2rem;border:1.5px solid var(--ink);padding:.35rem .8rem;font:600 .72rem var(--mono);letter-spacing:.1em;text-transform:uppercase}
+/* contact */
+.ct .g{display:grid;gap:2.4rem}
+@media(min-width:960px){.ct .g{grid-template-columns:1fr 1fr;gap:4rem}}
+.ct h2{font-size:clamp(2.4rem,5.6vw,4.2rem)}
+.ct form{display:grid;gap:1rem;border:1.5px solid var(--line);padding:clamp(1.2rem,3vw,2rem);background:rgba(11,42,74,.7)}
+.ct label{display:grid;gap:.35rem;font:500 .78rem var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--line)}
+.ct input,.ct select,.ct textarea{min-height:50px;border:1px solid rgba(156,195,240,.5);background:var(--bp);color:var(--white);padding:.6rem .8rem;font-family:var(--sans);font-size:1rem;letter-spacing:0;text-transform:none}
+.ct .two{display:grid;gap:1rem}@media(min-width:620px){.ct .two{grid-template-columns:1fr 1fr}}
+.err{color:#ffb4a8;font-size:.78rem;text-transform:none;letter-spacing:0;font-family:var(--sans)}
+.ok{border:1.5px solid var(--hl);padding:2rem}
+.list{list-style:none;padding:0;margin:1.6rem 0 0;display:grid;gap:.7rem}
+.list li{display:flex;gap:.8rem;color:var(--soft)}
+.list li::before{content:"[\2713]";font-family:var(--mono);color:var(--hl)}
+footer{border-top:1px solid rgba(156,195,240,.25);padding-block:2.2rem;color:var(--soft);font-size:.88rem}
+footer .dis{margin-top:.8rem;font-size:.84rem}
+</style>
+</head>
+<body class="bpbg">
+<a class="skip" href="#main" data-go="main">Skip to content</a>
+<header><div class="wrap">
+ <a class="brand" href="#top" data-go="top" aria-label="RRS Builders Corp., home"><span class="lg">RRS</span><span><b>RRS Builders Corp.</b><small>Family-owned &middot; Baldwin, NY</small></span></a>
+ <nav class="main" aria-label="Main"><button type="button" data-go="rooms">Services</button><button type="button" data-go="reviews">Reviews</button><button type="button" data-go="contact">Free estimate</button></nav>
+ <div class="hc"><button class="btn" type="button" data-go="contact" style="white-space:nowrap">Estimate</button></div>
+</div></header>
+<main id="main" tabindex="-1">
+<section class="hero" id="top"><div class="wrap g">
+ <div>
+  <p class="mono rv">Full-service remodeling &middot; 23 years in business</p>
+  <h1 class="rv" style="--d:1;margin-top:1rem">Remodels, <span class="hl">built to plan.</span></h1>
+  <p class="rv" style="--d:2">Kitchens, bathrooms, basements, garages and brick and stone work, from a family-owned builder in Baldwin. Free estimates and warranties.</p>
+  <div class="cta rv" style="--d:3"><button class="btn" type="button" data-go="contact">Get a free estimate</button><button class="btn ghost" type="button" data-go="reviews">Read the reviews</button></div>
+  <div class="spec rv" style="--d:4">
+   <div><b><span data-n="4.8" data-dec="1">4.8</span></b><small>Rating</small></div>
+   <div><b><span data-n="102">102</span></b><small>Reviews</small></div>
+   <div><b><span data-n="23">23</span></b><small>Years</small></div>
+   <div><b>Free</b><small>Estimates</small></div>
+  </div>
+ </div>
+ <div class="plan rv" style="--d:1" aria-hidden="true"><span class="cap">SECTION A-A &middot; TYPICAL REMODEL</span>
+  <svg viewBox="0 0 560 420">
+   <path class="dw" style="--l:900;--i:0" d="M60 170 L280 50 L500 170"/>
+   <path class="dw" style="--l:1300;--i:1" d="M90 160 V370 H470 V160"/>
+   <path class="dw" style="--l:400;--i:2" d="M90 265 H470"/>
+   <path class="dw" style="--l:300;--i:3" d="M60 370 H500"/>
+   <path class="dw" style="--l:700;--i:4" d="M90 370 V410 H470 V370"/>
+   <path class="dw" style="--l:400;--i:5" d="M120 230 H230 V200 H120 Z M130 200 V180 M220 200 V180"/>
+   <path class="dw" style="--l:400;--i:6" d="M300 255 V215 a20 20 0 0 1 40 0 V255 M360 255 H440 V230 H360 Z"/>
+   <path class="dw" style="--l:400;--i:7" d="M120 340 H200 V300 H120 Z M250 360 V300 H330 V360"/>
+   <path class="dw" style="--l:300;--i:8" d="M380 360 L440 300 M380 300 L440 360"/>
+   <text class="lbl" x="120" y="252">KITCHEN</text><text class="lbl" x="350" y="276">BATH</text><text class="lbl" x="120" y="362">BASEMENT</text><text class="lbl" x="372" y="292">GARAGE</text><text class="lbl" x="230" y="404">BRICK &amp; STONE</text>
+  </svg>
+ </div>
+</div></section>
+
+<section class="sec" id="rooms" tabindex="-1"><div class="wrap">
+ <div class="hd"><div><p class="mono">Services</p><h2 class="rv" style="margin-top:.8rem">Every room. <span class="hl">One builder.</span></h2></div><p class="rv" style="--d:1">From one bathroom to a full basement, the same family-owned crew handles the job.</p></div>
+ <div class="rooms">
+  <div class="rv"><span class="tag">01 / KITCHENS</span><svg viewBox="0 0 54 54"><rect x="6" y="20" width="42" height="28"/><path d="M6 30h42M18 20v-8h18v8"/></svg><h3>Kitchens</h3><p>Full kitchen remodels, from layout to the last cabinet handle.</p></div>
+  <div class="rv" style="--d:1"><span class="tag">02 / BATHROOMS</span><svg viewBox="0 0 54 54"><path d="M6 30h42v6a12 12 0 01-12 12H18A12 12 0 016 36z"/><path d="M12 30V12a6 6 0 0112 0"/></svg><h3>Bathrooms</h3><p>New tile, fixtures and vanities, done start to finish.</p></div>
+  <div class="rv" style="--d:2"><span class="tag">03 / BASEMENTS</span><svg viewBox="0 0 54 54"><path d="M6 20h42v28H6zM6 20L27 6l21 14M16 48V34h22v14"/></svg><h3>Basements</h3><p>Unfinished space turned into rooms you'll use.</p></div>
+  <div class="rv"><span class="tag">04 / GARAGES</span><svg viewBox="0 0 54 54"><path d="M6 22L27 8l21 14v26H6zM14 48V28h26v20M14 34h26M14 40h26"/></svg><h3>Garages</h3><p>Garage renovations and conversions.</p></div>
+  <div class="rv" style="--d:1"><span class="tag">05 / BRICK &amp; STONE</span><svg viewBox="0 0 54 54"><path d="M6 12h42v30H6zM6 22h42M6 32h42M18 12v10M34 12v10M26 22v10M12 32v10M40 32v10"/></svg><h3>Brick &amp; stone</h3><p>Steps, walls and stone work, a specialty of the house.</p></div>
+  <div class="more rv" style="--d:2"><span class="tag">06 / AND MORE</span><h3>And more</h3><p>Concrete, decks, foundations and dozens of other services. Ask about your project.</p></div>
+ </div>
+</div></section>
+
+<section class="sec rv-wrap" id="reviews" tabindex="-1"><div class="wrap">
+ <div class="hd"><div><p class="mono">Reviews</p><h2 class="rv" style="margin-top:.8rem">102 homeowners have <span class="hl">already said it.</span></h2></div><p class="rv" style="--d:1">With the live review feed add-on, new reviews show up here on their own, the day they're posted.</p></div>
+ <div class="rg">
+  <div class="score rv"><span class="live"><i></i>Live feed demo</span><b class="big" style="margin-top:1rem"><span data-n="4.8" data-dec="1">4.8</span></b><div class="stars" aria-label="4.8 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p style="margin:.4rem 0 0">Average from <b>102 reviews</b> on HomeAdvisor, checked October 8, 2026.</p><span class="addon">Add-on shown: live review feed</span></div>
+  <div>
+   <div id="rfeed" aria-label="Demo review feed">
+    <div class="rc"><span class="av">HA</span><div class="top"><span>New review &middot; HomeAdvisor</span><b>&#9733;&#9733;&#9733;&#9733;&#9733;</b></div><div class="lines"><i style="width:92%"></i><i style="width:74%"></i></div></div>
+    <div class="rc"><span class="av">HA</span><div class="top"><span>New review &middot; HomeAdvisor</span><b>&#9733;&#9733;&#9733;&#9733;&#9733;</b></div><div class="lines"><i style="width:86%"></i><i style="width:60%"></i></div></div>
+    <div class="rc"><span class="av">G</span><div class="top"><span>New review &middot; Google</span><b>&#9733;&#9733;&#9733;&#9733;&#9733;</b></div><div class="lines"><i style="width:95%"></i><i style="width:68%"></i></div></div>
+    <div class="rc"><span class="av">HA</span><div class="top"><span>New review &middot; HomeAdvisor</span><b>&#9733;&#9733;&#9733;&#9733;&#9733;</b></div><div class="lines"><i style="width:80%"></i><i style="width:55%"></i></div></div>
+   </div>
+   <p class="demo-note" style="color:#4c5d72"><b>Demo feed.</b> Grey lines stand in for review text. On the real site, the business's own newest reviews fill these cards automatically.</p>
+  </div>
+ </div>
+</div></section>
+
+<section class="sec ct" id="contact" tabindex="-1"><div class="wrap g">
+ <div>
+  <p class="mono">Free estimate</p>
+  <h2 class="rv" style="margin-top:.8rem">Tell us about <span class="hl">the room.</span></h2>
+  <ul class="list rv" style="--d:1"><li>Free estimates</li><li>Work backed by a warranty</li><li>Credit cards accepted</li><li>Family-owned, based at 3339 Parkway Drive, Baldwin</li></ul>
+ </div>
+ <div>
+  <form id="ctForm" data-demo="ctOk" novalidate>
+   <div class="two"><label>Name<input autocomplete="name" required><span class="err" hidden>Please enter your name.</span></label><label>Phone<input type="tel" autocomplete="tel" required><span class="err" hidden>Please enter a phone number.</span></label></div>
+   <label>Project<select><option>Kitchen</option><option>Bathroom</option><option>Basement</option><option>Garage</option><option>Brick &amp; stone</option><option>Something else</option></select></label>
+   <label>Details<textarea rows="3"></textarea></label>
+   <div><button class="btn" type="submit">Request my free estimate</button></div>
+   <p class="demo-note"><b>Demo form.</b> This is a website concept. Nothing is sent or saved.</p>
+  </form>
+  <div class="ok" id="ctOk" hidden tabindex="-1"><h3>Demo complete.</h3><p>On the real site this request would go straight to RRS Builders. Nothing was sent or saved.</p><button class="btn" type="button" data-again="ctForm">Start over</button></div>
+ </div>
+</div></section>
+</main>
+<footer><div class="wrap"><span>RRS Builders Corp. &middot; 3339 Parkway Drive, Baldwin, NY</span>
+ <p class="dis">Independent website concept. Not affiliated with or approved by RRS Builders Corp. Business details and rating are from HomeAdvisor, checked October 8, 2026. Drawings are placeholders until real job photos are added.</p></div></footer>
+<dialog class="lbx" id="lbx" aria-label="Photo viewer"><img id="lbxI" alt=""><p id="lbxC"></p><div class="lbb"><button type="button" id="lbxP" aria-label="Previous photo">&larr;</button><button type="button" id="lbxX">Close</button><button type="button" id="lbxN" aria-label="Next photo">&rarr;</button></div></dialog>
+<script>
+(function(){
+"use strict";
+var d=document,$=function(s,r){return (r||d).querySelector(s)},$$=function(s,r){return [].slice.call((r||d).querySelectorAll(s))};
+d.documentElement.classList.add("js");
+var RM=matchMedia("(prefers-reduced-motion:reduce)").matches;
+window.__site={$:$,$$:$$,RM:RM};
+function go(id){var el=d.getElementById(id);if(!el)return;var hd=$("header");var off=(hd&&getComputedStyle(hd).position!=="static")?hd.offsetHeight+8:0;var y=el.getBoundingClientRect().top+pageYOffset-(id==="top"?0:off);scrollTo({top:y,behavior:RM?"auto":"smooth"});try{el.focus({preventScroll:true})}catch(e){}}
+window.__site.go=go;
+/* lightbox */
+var lb=$("#lbx"),G=[],cur=0;
+function lbShow(i){if(!G.length)return;cur=(i+G.length)%G.length;$("#lbxI").src=G[cur].src;$("#lbxI").alt=G[cur].alt;$("#lbxC").textContent=(G[cur].getAttribute("data-cap")||G[cur].alt)+" · "+(cur+1)+" of "+G.length;}
+d.addEventListener("click",function(e){
+  var g=e.target.closest("[data-go]");if(g){e.preventDefault();go(g.getAttribute("data-go"));var nv=$("#menu");if(nv&&nv.classList.contains("open")){nv.classList.remove("open");var mb=$("#menuBtn");if(mb)mb.setAttribute("aria-expanded","false");}return;}
+  var t=e.target.closest("[data-lb]");if(t&&lb){var grp=t.closest("[data-lbgroup]")||d;G=$$("[data-lb] img",grp).filter(function(i){return !i.closest("[hidden]")});var im=$("img",t);lbShow(G.indexOf(im));lb.showModal?lb.showModal():lb.setAttribute("open","");return;}
+  var mb=e.target.closest("#menuBtn");if(mb){var nv=$("#menu");var o=nv.classList.toggle("open");mb.setAttribute("aria-expanded",o);}
+});
+if(lb){$("#lbxX").addEventListener("click",function(){lb.close?lb.close():lb.removeAttribute("open")});$("#lbxP").addEventListener("click",function(){lbShow(cur-1)});$("#lbxN").addEventListener("click",function(){lbShow(cur+1)});lb.addEventListener("keydown",function(e){if(e.key==="ArrowLeft")lbShow(cur-1);if(e.key==="ArrowRight")lbShow(cur+1)});lb.addEventListener("click",function(e){if(e.target===lb&&lb.close)lb.close()});}
+/* demo forms */
+$$("form[data-demo]").forEach(function(f){f.addEventListener("submit",function(e){e.preventDefault();var bad=null;$$("[required]",f).forEach(function(i){var ok=!!i.value.trim();var er=i.parentNode.querySelector(".err");if(er)er.hidden=ok;i.setAttribute("aria-invalid",!ok);if(!ok&&!bad)bad=i;});if(bad){bad.focus();return;}var ok=d.getElementById(f.getAttribute("data-demo"));f.hidden=true;ok.hidden=false;ok.focus();});});
+$$("[data-again]").forEach(function(b){b.addEventListener("click",function(){var f=d.getElementById(b.getAttribute("data-again"));f.reset();f.hidden=false;b.closest("[tabindex]").hidden=true;});});
+/* count up */
+function count(el){var to=parseFloat(el.getAttribute("data-n")),dec=+(el.getAttribute("data-dec")||0);if(RM){el.textContent=to.toFixed(dec);return;}var t0=null;function s(t){if(!t0)t0=t;var k=Math.min(1,(t-t0)/1500);k=1-Math.pow(1-k,3);el.textContent=(to*k).toFixed(dec);if(k<1)requestAnimationFrame(s);}requestAnimationFrame(s);}
+var pend=$$(".rv"),cn=$$("[data-n]"),pars=RM?[]:$$("[data-par]");
+function tick(){var vh=innerHeight;
+  pend=pend.filter(function(el){if(el.closest("[hidden]"))return true;var r=el.getBoundingClientRect();if(r.top<vh*.92&&r.bottom>-50){el.classList.add("in");return false;}return true;});
+  cn=cn.filter(function(el){var r=el.getBoundingClientRect();if(r.top<vh*.9&&r.bottom>0){count(el);return false;}return true;});
+  pars.forEach(function(el){var r=el.parentNode.getBoundingClientRect();if(r.bottom<0||r.top>vh)return;var k=((r.top+r.height/2)-vh/2)/vh;el.style.transform="translate3d(0,"+(k*parseFloat(el.getAttribute("data-par"))*r.height).toFixed(1)+"px,0) scale(1.12)";});
+  if(window.__site.onTick)window.__site.onTick(vh);}
+window.__site.tick=tick;
+var tk=false;function on(){if(tk)return;tk=true;requestAnimationFrame(function(){tk=false;tick();});}
+addEventListener("scroll",on,{passive:true});addEventListener("resize",on);
+setTimeout(tick,30);setTimeout(tick,400);setTimeout(tick,1200);
+/* booking */
+var bk=$("#bk");
+if(bk){var dsEl=$(".days",bk),slEl=$(".slots",bk),selD=null,selT=null;var N=["Sun","Mon","Tue","Wed","Thu","Fri","Sat"],M=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+  var base=new Date();base.setHours(0,0,0,0);var days=[];for(var i=1;i<=14;i++){var x=new Date(base);x.setDate(base.getDate()+i);days.push(x);}
+  dsEl.innerHTML=days.map(function(x,i){var off=x.getDay()===0;return '<button type="button" data-i="'+i+'"'+(off?' disabled aria-label="'+N[x.getDay()]+' '+M[x.getMonth()]+' '+x.getDate()+', closed"':' aria-label="'+N[x.getDay()]+' '+M[x.getMonth()]+' '+x.getDate()+'"')+' aria-pressed="false"><small>'+N[x.getDay()]+'</small><b>'+x.getDate()+'</b></button>';}).join("");
+  var SL=(bk.getAttribute("data-slots")||"8:00 AM,10:00 AM,12:00 PM,2:00 PM,4:00 PM").split(",");
+  function slots(i){var seed=(days[i].getDate()*7)%SL.length;slEl.innerHTML=SL.map(function(s,k){var taken=(k===seed)||(days[i].getDay()===6&&k>=SL.length-2);return '<button type="button" data-t="'+k+'" aria-pressed="false"'+(taken?' disabled aria-label="'+s+', booked"':'')+'>'+s+'</button>';}).join("");selT=null;sum();}
+  function sum(){var s=$(".sum",bk);var sv=$("#bkSvc",bk);if(selD===null){s.textContent="Pick a day to see open times.";return;}var x=days[selD];s.textContent=(sv?sv.value+" · ":"")+N[x.getDay()]+", "+M[x.getMonth()]+" "+x.getDate()+(selT!==null?" at "+SL[selT]:" · pick a time");}
+  bk.addEventListener("click",function(e){var b=e.target.closest(".days button");if(b&&!b.disabled){$$(".days button",bk).forEach(function(o){o.setAttribute("aria-pressed",o===b)});selD=+b.getAttribute("data-i");slots(selD);return;}var t=e.target.closest(".slots button");if(t&&!t.disabled){$$(".slots button",bk).forEach(function(o){o.setAttribute("aria-pressed",o===t)});selT=+t.getAttribute("data-t");sum();}});
+  var sv=$("#bkSvc",bk);if(sv)sv.addEventListener("change",sum);
+  $("form",bk).addEventListener("submit",function(e){e.preventDefault();var er=$(".bkerr",bk);if(selD===null||selT===null){er.hidden=false;er.textContent="Pick a day and a time first.";return;}er.hidden=true;var bad=null;$$("[required]",this).forEach(function(i){var ok=!!i.value.trim();var r=i.parentNode.querySelector(".err");if(r)r.hidden=ok;if(!ok&&!bad)bad=i;});if(bad){bad.focus();return;}$("#bkWhen").textContent=$(".sum",bk).textContent;$(".bkmain",bk).hidden=true;$("#bkOk").hidden=false;$("#bkOk").focus();});
+  $("#bkAgain").addEventListener("click",function(){$("form",bk).reset();selD=null;selT=null;$$(".days button",bk).forEach(function(o){o.setAttribute("aria-pressed","false")});slEl.innerHTML="";sum();$(".bkmain",bk).hidden=false;$("#bkOk").hidden=true;});
+  sum();}
+$$("[data-src-from]").forEach(function(i){var s=d.getElementById(i.getAttribute("data-src-from"));if(s)i.src=s.src;});
+/* admin profile demo */
+var adm=$("#adm");
+if(adm){var pk=null;var gal=d.getElementById(adm.getAttribute("data-gal"));
+  adm.addEventListener("click",function(e){var b=e.target.closest(".pick button");if(b){$$(".pick button",adm).forEach(function(o){o.setAttribute("aria-pressed",o===b)});pk=b;}});
+  $("#admPub").addEventListener("click",function(){var ti=$("#admTitle"),er=$("#admErr");if(!pk||!ti.value.trim()){er.hidden=false;er.textContent=!pk?"Pick a photo first.":"Give the project a name.";return;}er.hidden=true;var tpl=gal.querySelector("[data-tpl]")||gal.firstElementChild;var n=tpl.cloneNode(true);n.removeAttribute("data-tpl");n.hidden=false;var im=n.querySelector("img");im.src=pk.querySelector("img").src;im.alt=ti.value.trim();im.setAttribute("data-cap",ti.value.trim());var cap=n.querySelector("[data-capt]");if(cap)cap.textContent=ti.value.trim();var nw=n.querySelector("[data-new]");if(nw)nw.hidden=false;n.classList.add("in");gal.insertBefore(n,gal.firstChild);n.classList.add("flash");ti.value="";$("#admOk").hidden=false;setTimeout(function(){go(gal.id)},200);});
+  var nt=$("#admNotice");if(nt)nt.addEventListener("input",function(){$$("[data-notice]").forEach(function(x){x.textContent=nt.value||x.getAttribute("data-notice")})});}
+/* review feed demo */
+var rf=$("#rfeed");
+if(rf&&!RM){var cards=$$(".rc",rf),k=0;setInterval(function(){var c=cards[k%cards.length];rf.insertBefore(c,rf.firstChild);c.classList.remove("in");void c.offsetWidth;c.classList.add("arrive");setTimeout(function(){c.classList.remove("arrive")},1200);k++;},3200);}
+})();
+</script>
+</body>
+</html>
